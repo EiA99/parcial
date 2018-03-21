@@ -1,0 +1,78 @@
+<html>
+	<head>
+	<script>
+//Metodo para saber que imagen va tiene como parametros la fila y la columna de dicha imagen
+function cualImagen( fila, col ){
+	var imagenes = [ 
+		"1.png",
+		"2.png",
+		"3.png",
+		"4.png",
+		"5.png",
+		"6.png",
+		"7.png",
+		"8.png",
+		"9.png",
+		"10.png"
+	];
+	var pos = (fila+1)*5 + col;
+	return "img/" + imagenes[ pos % 10 ];
+}
+//Crea un nuevo div con una imagen
+function htmlCarta( fila, col ){
+	return '<div onclick="mostrar(event)" ><img src="' + cualImagen(fila,col) + '" /></div>';
+}
+//LLena el tablero con las cartas
+function repartir(){
+	
+	for( var fila = 0; fila < 4; fila++){
+		var cartas="";
+		for( col = 0; col < 5; col++){
+			cartas += htmlCarta( fila, col );
+		}
+		var num= fila+1;
+		var text= 'fila'+num;
+		tab = document.getElementById(text);
+		tab.innerHTML = cartas;
+	}
+	
+	
+}
+//funcion que debe mostrar las imagenes
+function mostrar(ev){
+	ev.target.dataset.img.style.visibility=visible;
+}
+//Funcino que suma si acierta		
+function sumar(ev){
+	var num = ev.target.innerText;
+	ev.target.innerText=num+10;
+}
+	
+	</script>
+	<style>
+#tablero img
+{
+	visibility: hidden;
+}	
+
+#tablero div
+{
+	background-color: indigo;
+	padding: 4px;
+	border-width: 5px;
+	margin: 8px;
+}
+
+	</style>
+	</head>
+	<body>
+	<button onclick="repartir()">Repartir</button>
+	<div id="tablero">
+		<div id=fila1 style=" display: inline-flex; background-color: unset;"> </div>
+		<div id=fila2 style=" display: inline-flex; background-color: unset;"> </div>
+		<div id=fila3 style=" display: inline-flex; background-color: unset;"> </div>
+		<div id=fila4 style=" display: inline-flex; background-color: unset;"> </div>
+	</div>
+	<div  id="puntaje" onclick="sumar(event)"> 0 </div>
+	</body>
+</html>
