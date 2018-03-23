@@ -20,7 +20,7 @@ function cualImagen( fila, col ){
 }
 //Crea un nuevo div con una imagen
 function htmlCarta( fila, col ){
-	return '<div onclick="mostrar(event)" ><img src="' + cualImagen(fila,col) + '" /></div>';
+	return '<div ><img src="' + cualImagen(fila,col) + '" /></div>';
 }
 //LLena el tablero con las cartas
 function repartir(){
@@ -52,7 +52,7 @@ function sumar(ev){
 	<style>
 #tablero img
 {
-	visibility: hidden;
+	visibility: visible;
 }	
 
 #tablero div
@@ -67,7 +67,7 @@ function sumar(ev){
 	</head>
 	<body>
 	<button onclick="repartir()">Repartir</button>
-	<div id="tablero">
+	<div id="tablero" style="display: inline-grid;">
 		<div id=fila1 style=" display: inline-flex; background-color: unset;"> </div>
 		<div id=fila2 style=" display: inline-flex; background-color: unset;"> </div>
 		<div id=fila3 style=" display: inline-flex; background-color: unset;"> </div>
